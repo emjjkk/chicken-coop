@@ -3,4 +3,4 @@ A random dump of html css js projects I made on several occasions, mostly webpag
 
 Feel free to use amy of them if you find them that useful!
 
-- <a href='/dev-portfolio/index.html'> Developer portfolio </a>
+- <a href='dev-portfolio/index.html'> Developer portfolio </a>
