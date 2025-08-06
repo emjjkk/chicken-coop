@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEFY | Modern Brutalist eSports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['Courier New', 'monospace'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 }
+                        },
+                        slideUp: {
+                            '0%': { opacity: 0, transform: 'translateY(30px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' }
+                        },
+                        slideInLeft: {
+                            '0%': { opacity: 0, transform: 'translateX(-30px)' },
+                            '100%': { opacity: 1, transform: 'translateX(0)' }
+                        },
+                        slideInRight: {
+                            '0%': { opacity: 0, transform: 'translateX(30px)' },
+                            '100%': { opacity: 1, transform: 'translateX(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto+Mono:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .brutalist-border {
+            border: 3px solid #fff;
+            box-shadow: 8px 8px 0px 0px #fff;
+        }
+        
+        .brutalist-border-thin {
+            border: 2px solid #fff;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #fff;
+        }
+        
+        .team-member {
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 0 0 #fff;
+        }
+        
+        .event-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 0 0 #fff;
+        }
+        
+        .news-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .merch-item {
+            transition: all 0.3s ease;
+        }
+        
+        .merch-item:hover {
+            transform: translateY(-8px);
+        }
+        
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-gaming-in-the-dark-4886-large.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-4 text-center z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 font-['Oswald'] tracking-wider animate-fade-in">
+                DEFY LIMITS
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-2xl mx-auto font-mono">
+                Where champions are forged through relentless competition and unwavering determination.
+            </p>
+            <button class="brutalist-border bg-white text-black px-8 py-4 text-xl font-bold hover:bg-black hover:text-white transition duration-300 pulse">
+                JOIN THE BATTLE
+            </button>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-3xl"></i>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">UPCOMING EVENTS</h2>
+            <div class="flex overflow-x-auto pb-6 space-x-6 scrollbar-hide">
+                <!-- Event 1 -->
+                <div class="flex-shrink-0 w-80 brutalist-border bg-black p-6 event-tile scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-800 w-16 h-16 flex items-center justify-center mr-4">
+                            <i class="fab fa-steam text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">GLOBAL CHAMPIONSHIP</h3>
+                            <p class="text-gray-400">CS:GO</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-2"><i class="far fa-calendar-alt mr-2"></i> June 15-18, 2023</p>
+                    <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Las Vegas, NV</p>
+                    <button class="brutalist-border-thin w-full py-2 text-center hover:bg-white hover:text-black transition duration-300">
+                        VIEW DETAILS
+                    </button>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="flex-shrink-0 w-80 brutalist-border bg-black p-6 event-tile scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-800 w-16 h-16 flex items-center justify-center mr-4">
+                            <i class="fab fa-playstation text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">REGIONAL LEAGUE</h3>
+                            <p class="text-gray-400">Valorant</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-2"><i class="far fa-calendar-alt mr-2"></i> July 22-25, 2023</p>
+                    <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Tokyo, Japan</p>
+                    <button class="brutalist-border-thin w-full py-2 text-center hover:bg-white hover:text-black transition duration-300">
+                        VIEW DETAILS
+                    </button>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="flex-shrink-0 w-80 brutalist-border bg-black p-6 event-tile scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-800 w-16 h-16 flex items-center justify-center mr-4">
+                            <i class="fab fa-xbox text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">WORLD CUP</h3>
+                            <p class="text-gray-400">Rocket League</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-2"><i class="far fa-calendar-alt mr-2"></i> August 5-8, 2023</p>
+                    <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Berlin, Germany</p>
+                    <button class="brutalist-border-thin w-full py-2 text-center hover:bg-white hover:text-black transition duration-300">
+                        VIEW DETAILS
+                    </button>
+                </div>
+                
+                <!-- Event 4 -->
+                <div class="flex-shrink-0 w-80 brutalist-border bg-black p-6 event-tile scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-gray-800 w-16 h-16 flex items-center justify-center mr-4">
+                            <i class="fas fa-gamepad text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">LOCAL TOURNAMENT</h3>
+                            <p class="text-gray-400">Apex Legends</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-2"><i class="far fa-calendar-alt mr-2"></i> September 12-14, 2023</p>
+                    <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Seoul, South Korea</p>
+                    <button class="brutalist-border-thin w-full py-2 text-center hover:bg-white hover:text-black transition duration-300">
+                        VIEW DETAILS
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">ABOUT DEFY</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 scroll-animation">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">OUR STORY</h3>
+                    <p class="mb-4 text-gray-300">
+                        Founded in 2018, DEFY has emerged as a dominant force in the competitive gaming scene. Our 
+                        commitment to excellence and relentless pursuit of victory has earned us recognition on the 
+                        global stage.
+                    </p>
+                    <p class="mb-4 text-gray-300">
+                        We believe in pushing boundaries and challenging conventions. Our players are not just 
+                        competitors; they are innovators who redefine what's possible in esports.
+                    </p>
+                    <button class="brutalist-border bg-white text-black px-6 py-3 font-bold hover:bg-black hover:text-white transition duration-300 mt-4">
+                        TEAM HISTORY
+                    </button>
+                </div>
+                <div class="brutalist-border p-2">
+                    <div class="bg-gray-800 h-64 md:h-80 flex items-center justify-center">
+                        <div class="text-center p-4">
+                            <div class="text-5xl font-bold mb-2">5</div>
+                            <div class="text-xl">YEARS DOMINANCE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Highlights -->
+            <div class="mb-20 scroll-animation">
+                <h3 class="text-2xl font-bold mb-8 text-center">ACHIEVEMENTS HIGHLIGHTS</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="brutalist-border p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">128</div>
+                        <div class="text-gray-300">Tournament Wins</div>
+                    </div>
+                    <div class="brutalist-border p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">42</div>
+                        <div class="text-gray-300">Consecutive Wins</div>
+                    </div>
+                    <div class="brutalist-border p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">$2.4M</div>
+                        <div class="text-gray-300">Prize Money</div>
+                    </div>
+                    <div class="brutalist-border p-6 text-center">
+                        <div class="text-4xl font-bold mb-2">7</div>
+                        <div class="text-gray-300">World Titles</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Games Played -->
+            <div class="scroll-animation">
+                <h3 class="text-2xl font-bold mb-8 text-center">GAMES WE DOMINATE</h3>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="w-24 h-24 brutalist-border flex items-center justify-center">
+                        <i class="fab fa-steam text-4xl"></i>
+                    </div>
+                    <div class="w-24 h-24 brutalist-border flex items-center justify-center">
+                        <i class="fab fa-playstation text-4xl"></i>
+                    </div>
+                    <div class="w-24 h-24 brutalist-border flex items-center justify-center">
+                        <i class="fab fa-xbox text-4xl"></i>
+                    </div>
+                    <div class="w-24 h-24 brutalist-border flex items-center justify-center">
+                        <i class="fas fa-gamepad text-4xl"></i>
+                    </div>
+                    <div class="w-24 h-24 brutalist-border flex items-center justify-center">
+                        <i class="fas fa-rocket text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roster Section -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">MEET THE TEAM</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">N1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">MAX "NEXUS" REYNOLDS</h3>
+                            <p class="text-gray-400">Team Captain</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">22 years old • CS:GO Specialist • 5 years professional experience</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">F1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">ALEX "FALCON" CHEN</h3>
+                            <p class="text-gray-400">In-Game Leader</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">24 years old • Valorant Expert • IGL with 3 years experience</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">R1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">JORDAN "RIFT" WONG</h3>
+                            <p class="text-gray-400">Support Specialist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">19 years old • Apex Legends • Rising star in the scene</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">S1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">SAM "SHADOW" KOWALSKI</h3>
+                            <p class="text-gray-400">Entry Fragger</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">21 years old • CS:GO • Known for clutch plays</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Team Member 5 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">G1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">DANIEL "GHOST" TORRES</h3>
+                            <p class="text-gray-400">Sniper Specialist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">23 years old • Valorant • 1000+ kills in tournaments</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <!-- Team Member 6 -->
+                <div class="brutalist-border p-6 team-member scroll-animation">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 brutalist-border mr-4 bg-gray-800 flex items-center justify-center">
+                            <span class="text-xl font-bold">V1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">VICTORIA "VOLT" PARKER</h3>
+                            <p class="text-gray-400">Support & Coach</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">26 years old • Team Coach • Former pro player</p>
+                    <div class="flex space-x-2">
+                        <i class="fab fa-twitch text-xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-xl hover:text-pink-500 cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">LATEST NEWS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- News Card 1 -->
+                <div class="brutalist-border bg-black news-card scroll-animation">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-trophy text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-gray-400 mb-2">MAY 15, 2023</div>
+                        <h3 class="text-xl font-bold mb-3">DEFY WINS REGIONAL CHAMPIONSHIP</h3>
+                        <p class="text-gray-300 mb-4">Our CS:GO team secured first place in the Western Regional Championship, earning a spot at the Global Finals.</p>
+                        <a href="#" class="text-white font-bold hover:underline">READ MORE →</a>
+                    </div>
+                </div>
+                
+                <!-- News Card 2 -->
+                <div class="brutalist-border bg-black news-card scroll-animation">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-users text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-gray-400 mb-2">MAY 8, 2023</div>
+                        <h3 class="text-xl font-bold mb-3">NEW SIGNING ANNOUNCEMENT</h3>
+                        <p class="text-gray-300 mb-4">We're excited to welcome Alex "Falcon" Chen to our Valorant roster for the upcoming season.</p>
+                        <a href="#" class="text-white font-bold hover:underline">READ MORE →</a>
+                    </div>
+                </div>
+                
+                <!-- News Card 3 -->
+                <div class="brutalist-border bg-black news-card scroll-animation">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-gray-400 mb-2">APRIL 29, 2023</div>
+                        <h3 class="text-xl font-bold mb-3">NEW MERCH COLLECTION</h3>
+                        <p class="text-gray-300 mb-4">Check out our limited edition "Defy Limits" collection now available in our online store.</p>
+                        <a href="#" class="text-white font-bold hover:underline">READ MORE →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merch Store -->
+    <section class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-title">MERCH STORE</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Merch Item 1 -->
+                <div class="merch-item scroll-animation">
+                    <div class="brutalist-border p-4 bg-gray-900">
+                        <div class="h-64 bg-gray-800 flex items-center justify-center mb-4">
+                            <i class="fas fa-tshirt text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">DEFY T-SHIRT</h3>
+                        <p class="text-gray-400 mb-4">Premium black cotton tee with our iconic logo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$29.99</span>
+                            <button class="brutalist-border px-4 py-2 hover:bg-white hover:text-black transition duration-300">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Merch Item 2 -->
+                <div class="merch-item scroll-animation">
+                    <div class="brutalist-border p-4 bg-gray-900">
+                        <div class="h-64 bg-gray-800 flex items-center justify-center mb-4">
+                            <i class="fas fa-hat-cowboy text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">TEAM CAP</h3>
+                        <p class="text-gray-400 mb-4">Adjustable snapback with embroidered logo</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$24.99</span>
+                            <button class="brutalist-border px-4 py-2 hover:bg-white hover:text-black transition duration-300">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Merch Item 3 -->
+                <div class="merch-item scroll-animation">
+                    <div class="brutalist-border p-4 bg-gray-900">
+                        <div class="h-64 bg-gray-800 flex items-center justify-center mb-4">
+                            <i class="fas fa-mug-hot text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">CHAMPION MUG</h3>
+                        <p class="text-gray-400 mb-4">Ceramic mug with team roster print</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$19.99</span>
+                            <button class="brutalist-border px-4 py-2 hover:bg-white hover:text-black transition duration-300">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Merch Item 4 -->
+                <div class="merch-item scroll-animation">
+                    <div class="brutalist-border p-4 bg-gray-900">
+                        <div class="h-64 bg-gray-800 flex items-center justify-center mb-4">
+                            <i class="fas fa-laptop text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">GAMING MOUSEPAD</h3>
+                        <p class="text-gray-400 mb-4">Large extended mousepad with team design</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">$34.99</span>
+                            <button class="brutalist-border px-4 py-2 hover:bg-white hover:text-black transition duration-300">
+                                ADD TO CART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="brutalist-border px-8 py-4 text-xl font-bold hover:bg-white hover:text-black transition duration-300">
+                    VIEW ALL MERCH
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">READY TO JOIN THE ELITE?</h2>
+            <p class="text-xl mb-10 max-w-2xl mx-auto text-gray-300">
+                Whether you're a player, fan, or potential sponsor, DEFY welcomes all who dare to defy limits.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <button class="brutalist-border bg-white text-black px-8 py-4 text-xl font-bold hover:bg-black hover:text-white transition duration-300 w-full sm:w-auto">
+                    BECOME A SPONSOR
+                </button>
+                <button class="brutalist-border px-8 py-4 text-xl font-bold hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">
+                    JOIN OUR COMMUNITY
+                </button>
+                <button class="brutalist-border px-8 py-4 text-xl font-bold hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">
+                    TRYOUT FOR TEAM
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t-2 border-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">DEFY</h3>
+                    <p class="text-gray-400 mb-4">
+                        Pushing boundaries in competitive gaming since 2018. Champions are made here.
+                    </p>
+                    <div class="flex space-x-4">
+                        <i class="fab fa-twitch text-2xl hover:text-purple-500 cursor-pointer"></i>
+                        <i class="fab fa-twitter text-2xl hover:text-blue-400 cursor-pointer"></i>
+                        <i class="fab fa-instagram text-2xl hover:text-pink-500 cursor-pointer"></i>
+                        <i class="fab fa-youtube text-2xl hover:text-red-500 cursor-pointer"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">QUICK LINKS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Team</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Schedule</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Results</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Merch</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">GAMES</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Counter-Strike</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Valorant</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Apex Legends</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Rocket League</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">League of Legends</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold mb-4">CONTACT</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>123 Gaming Blvd, Los Angeles, CA</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>info@defy-esports.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 DEFY eSports. All rights reserved. Defy Limits.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-on-scroll');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.scroll-animation').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
