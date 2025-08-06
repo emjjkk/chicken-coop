@@ -3,4 +3,4 @@ A random dump of html css js projects I made on several occasions, mostly webpag
 
 Feel free to use amy of them if you find them that useful!
 
-- [Developer portfolio](/dev-portfolio/index.html) - I like this one, i might use it.
+- (/dev-portfolio/index.html)[Developer portfolio]- I like this one, i might use it.
